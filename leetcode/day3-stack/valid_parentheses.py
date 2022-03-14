@@ -14,8 +14,6 @@ class Solution:
             ")": "("
         }
 
-        stack = []
-
         for char in s:
             if char in opener:
                 stack.append(char)
@@ -32,3 +30,15 @@ sol = Solution()
 
 print(sol.isValid(preInput))
 # >>> True
+
+dic = {
+    "name": "llama",
+    "age": 30,
+    "hobby": "coding"
+}
+
+print(list(dic.items()))
+print(list(enumerate(dic)))
+
+for k, val in list(dic.items()):
+    print(k, val,k)
