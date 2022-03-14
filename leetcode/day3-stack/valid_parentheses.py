@@ -20,6 +20,7 @@ class Solution:
             else:
                 if not stack:
                     return False
+                # stack의 top위치의 여는 괄호를 가져와서 닫는 괄호와 key의 value와 비교하는 것이다.
                 top = stack.pop()
                 if pair[char] != top:
                     return False
@@ -30,15 +31,3 @@ sol = Solution()
 
 print(sol.isValid(preInput))
 # >>> True
-
-dic = {
-    "name": "llama",
-    "age": 30,
-    "hobby": "coding"
-}
-
-print(list(dic.items()))
-print(list(enumerate(dic)))
-
-for k, val in list(dic.items()):
-    print(k, val,k)
