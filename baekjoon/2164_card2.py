@@ -1,4 +1,4 @@
-from collections import  deque
+from collections import deque
 
 # preInput = int(input())
 preInput = 100
