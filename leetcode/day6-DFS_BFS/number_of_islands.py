@@ -59,3 +59,61 @@ class Solution:
 sol = Solution()
 
 print(sol.numIslands(preGrid))
+
+
+# class Solution:
+#     BFS를 이용하여 풀어본 방식이다. (queue)
+#     def island_bfs_queue(self, grid):
+#         dx = [0, 0, 1, -1]
+#         dy = [1, -1, 0, 0]
+#         count = 0
+#         rows, cols = len(grid), len(grid[0])
+#
+#         for row in range(rows):
+#             for col in range(cols):
+#                 if grid[row][col] != "1":
+#                     continue
+#
+#                 count += 1
+#
+#                 queue = deque([(row, col)])
+#
+#                 while q:
+#                     x, y = queue.popleft()
+#                     grid[x][y] = "0"
+#
+#                     for i in range(4):
+#                         new_x = x + dx[i]
+#                         new_y = y + dy[i]
+#
+#                         if new_x >= 0 and new_y >= 0 and new_x < rows and new_y < cols and grid[new_x][new_y] == "1":
+#                             grid[new_x][new_y] = "0"
+#                             queue.append((new_x, new_y))
+#
+#         return count
+#
+#     DFS를 이용하여 풀어본 방식이다.
+#     def island_dfs_stack(self, grid):
+#         dx = [0, 0, 1, -1]
+#         dy = [1, -1, 0, 0]
+#         rows, cols = len(grid), len(grid[0])
+#         cnt = 0
+#
+#         for row in range(rows):
+#             for col in range(cols):
+#                 if grid[row][col] != '1':
+#                     continue
+#
+#                 cnt += 1
+#                 stack = [(row, col)]
+#
+#                 while stack:
+#                     x, y = stack.pop()
+#                     grid[x][y] = '0'
+#                     for i in range(4):
+#                         nx = x + dx[i]
+#                         ny = y + dy[i]
+#                         if nx < 0 or nx >= rows or ny < 0 or ny >= cols or grid[nx][ny] != '1':
+#                             continue
+#                         stack.append((nx, ny))
+#         return cnt
