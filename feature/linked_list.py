@@ -1,56 +1,67 @@
-# Node 정의
 class Node:
-    def __init__(self, data, next=None):
-        self.data = data
+    def __init__(self, item, next=None):
+        self.item = item
         self.next = next
+
 
 class LinkedList:
     def __init__(self):
         self.head = None
 
-    def append(self, data):
-        if not self.head:
-            self.head = Node(data, None)
-        else:
-            node = self.head
-            while node.next:
-                node = node.next
-            node.next = Node(data, None)
+    def append(self, item):
+        if self.head is None:
+            self.head = Node(item, None)
+            return
 
-    def getNode(self, index):
+        node = self.head
+        while node.next:
+            node = node.next
+        node.next = Node(item, None)
+
+    def get_node(self, index):
+        if self.head is None:
+            print("List is empty!")
+            return None
+
         curr = 0
         node = self.head
-        while curr < index:
-            curr += 1
-            node = node.next
-        return node
-
-    def addNode(self, index, data):
-        newNode = Node(data, None)
-
-        if index == 0:
-            newNode.next = self.head
-            self.head = newNode
+        try:
+            while curr < index:
+                curr += 1
+                node = node.next
+            return node
+        except:
+            print("List is shorter than the index!")
             return
 
-        node = self.getNode(index-1)
-        nextNode = node.next
-        node.next = newNode
-        newNode.next = nextNode
+    def add_node(self, index, item):
+        new_node = Node(item, None)
 
-    def deleteNode(self, index):
         if index == 0:
-            self.head = self.head.next
+            new_node.next = self.head
+            self.head = new_node
             return
-        node = self.getNode(index-1)
+
+        try:
+            node = self.get_node(index - 1)
+            next_node = node.next
+            node.next = new_node
+            next_node.next = next_node
+        except:
+            print("List is shorter than the index!")
+            return
+
+    def delete_node(self, index):
+        if self.head is None:
+            print("List is empty!")
+            return
+
+        try:
+            node = self.get_node(index-1)
+            node.next = node.next.next
+        except:
+            print("List is shorter than the index!")
+            return
+
+        node = self.get_node(index-1)
         node.next = node.next.next
-
-
-l1 = [1,2,3,4,5]
-
-l2 = LinkedList()
-
-for ele in l1:
-    l2.append(ele)
-
-l2.addNode(3, 10)
