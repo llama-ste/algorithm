@@ -55,6 +55,9 @@ class LinkedList:
         if self.head is None:
             print("List is empty!")
             return
+        elif index == 0:
+            self.head = self.head.next
+            return
 
         try:
             node = self.get_node(index-1)
@@ -62,6 +65,3 @@ class LinkedList:
         except:
             print("List is shorter than the index!")
             return
-
-        node = self.get_node(index-1)
-        node.next = node.next.next
