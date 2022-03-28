@@ -26,6 +26,8 @@ class LinkedList:
         curr = 0
         node = self.head
         try:
+            if index == 0:
+                return node
             while curr < index:
                 curr += 1
                 node = node.next
@@ -44,6 +46,9 @@ class LinkedList:
 
         try:
             node = self.get_node(index - 1)
+            if node.next is None:
+                node.next = new_node
+                return
             next_node = node.next
             node.next = new_node
             next_node.next = next_node
@@ -55,7 +60,8 @@ class LinkedList:
         if self.head is None:
             print("List is empty!")
             return
-        elif index == 0:
+
+        if index == 0:
             self.head = self.head.next
             return
 
@@ -65,3 +71,11 @@ class LinkedList:
         except:
             print("List is shorter than the index!")
             return
+
+
+lst = LinkedList()
+
+lst.append(3)
+lst.delete_node(0)
+print(lst.head)
+
