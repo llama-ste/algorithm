@@ -10,7 +10,7 @@ class Solution:
         res = deque([])
         for elem in points:
             # 각요소를 제곱하여 거리값을 구하고 배열로 거리값, 원래좌표를 넣어줬다.
-            res.append([sum([elem[0] * elem[0], elem[1] * elem[1]]), elem])
+            res.append([[elem[0] * elem[0] + elem[1] * elem[1]], elem])
 
         sorting = deque(sorted(res))
 
